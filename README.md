@@ -2,11 +2,9 @@
 
 This is an app built with MERN Stack.
 
-&nbsp;
 # Purpose
 My purpose of developing this project is to show what I can do both on the frontend and the backend. To showcase my expertise in MERN stack I have developed this project. 
 
-&nbsp;
 # Features
 
 - Fully responsive design like Trello
@@ -24,7 +22,6 @@ My purpose of developing this project is to show what I can do both on the front
 - Change title of lists
 - Add description, cover color, members, labels, start date, due date, multiple checklist and multiple attachements
 
-&nbsp;
 # Used Technologies
 
 | Server Side    	| Client Side               	| Only Development 	|
