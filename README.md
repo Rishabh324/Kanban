@@ -1,13 +1,10 @@
 # Trello Clone With MERN Stack!
 
-
-
 This is an app built with MERN Stack.
 
-Click the image to watch video!
 &nbsp;
 # Purpose
-My purpose of developing this project is to show what I can do both on the frontend and the backend. I would also like to point out that it is my first project as Mern stack.
+My purpose of developing this project is to show what I can do both on the frontend and the backend. To showcase my expertise in MERN stack I have developed this project. 
 
 &nbsp;
 # Features
