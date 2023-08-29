@@ -9,8 +9,8 @@ import {
 import { openAlert } from '../Redux/Slices/alertSlice';
 import { addMembers, setActivityLoading, updateActivity, updateBackground, updateDescription } from '../Redux/Slices/boardSlice';
 
-const listRoute = 'http://localhost:8080/list';
-const boardRoute = 'http://localhost:8080/board';
+const listRoute = 'https://kanbanbackend-7afq.onrender.com/list';
+const boardRoute = 'https://kanbanbackend-7afq.onrender.com/board';
 
 export const getLists = async (boardId, dispatch) => {
 	dispatch(setLoading(true));
@@ -99,7 +99,7 @@ export const listTitleUpdate = async (listId, boardId, title, dispatch) => {
 export const boardDescriptionUpdate = async (boardId, description, dispatch) => {
 	try {
 		await dispatch(updateDescription(description));
-		await axios.put(`${boardRoute}/${boardId}/update-board-description`,{
+		await axios.put(`${boardRoute}/${boardId}/update-board-description`, {
 			description
 		});
 	} catch (error) {
@@ -114,8 +114,8 @@ export const boardDescriptionUpdate = async (boardId, description, dispatch) => 
 
 export const boardBackgroundUpdate = async (boardId, background, isImage, dispatch) => {
 	try {
-		await dispatch(updateBackground({background,isImage}));
-		await axios.put(`${boardRoute}/${boardId}/update-background`,{
+		await dispatch(updateBackground({ background, isImage }));
+		await axios.put(`${boardRoute}/${boardId}/update-background`, {
 			background,
 			isImage,
 		});
@@ -131,7 +131,7 @@ export const boardBackgroundUpdate = async (boardId, background, isImage, dispat
 
 export const boardMemberAdd = async (boardId, members, dispatch) => {
 	try {
-		const result = await axios.post(`${boardRoute}/${boardId}/add-member`,{
+		const result = await axios.post(`${boardRoute}/${boardId}/add-member`, {
 			members
 		});
 		await dispatch(addMembers(result.data));

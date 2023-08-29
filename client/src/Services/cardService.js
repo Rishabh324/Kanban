@@ -53,7 +53,7 @@ import {
 	updateStartDueDatesOfCard,
 } from '../Redux/Slices/listSlice';
 
-const baseUrl = 'http://localhost:8080/card';
+const baseUrl = 'https://kanbanbackend-7afq.onrender.com/card';
 let submitCall = Promise.resolve();
 
 export const getCard = async (cardId, listId, boardId, dispatch) => {

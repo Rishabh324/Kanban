@@ -13,7 +13,7 @@ import {
 } from "../Redux/Slices/userSlice";
 import { openAlert } from "../Redux/Slices/alertSlice";
 import setBearer from "../Utils/setBearer";
-const baseUrl = "http://localhost:8080/user/";
+const baseUrl = "https://kanbanbackend-7afq.onrender.com/user/";
 
 export const register = async (
   { name, surname, email, password, repassword },

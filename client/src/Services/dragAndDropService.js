@@ -2,7 +2,7 @@ import axios from 'axios';
 import { updateCardDragDrop, updateListDragDrop } from '../Redux/Slices/listSlice';
 import { openAlert } from '../Redux/Slices/alertSlice';
 
-const baseUrl = 'http://localhost:8080/list';
+const baseUrl = 'https://kanbanbackend-7afq.onrender.com/list';
 
 //  Create promise to queue requests
 let submitCall = Promise.resolve();
