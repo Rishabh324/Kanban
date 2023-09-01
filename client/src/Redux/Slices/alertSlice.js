@@ -17,11 +17,11 @@ export const alertSlice = createSlice({
       state.message = action.payload.message;
       state.severity = action.payload.severity;
       state.duration = action.payload.duration
-        ? action.payload.duration
-        : initialState.duration;
+      ? action.payload.duration
+      : initialState.duration;
       state.nextRoute = action.payload.nextRoute
-        ? action.payload.nextRoute
-        : null;
+      ? action.payload.nextRoute
+      : null;
     },
     closeAlert: (state) => {
       state.open = false;

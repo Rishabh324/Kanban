@@ -1,25 +1,17 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Route, useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import LoadingScreen from "../Components/LoadingScreen";
 
-const ProtectedRoute = ({ component: Component, ...rest }) => {
-  const history = useHistory();
+const ProtectedRoute = ({ children }) => {
+  const navigate = useNavigate();
   const user = useSelector((state) => state.user);
   useEffect(() => {
-    if (!user.isAuthenticated && !user.pending) history.push("/");
+    if (!user.isAuthenticated && !user.pending) navigate("/");
   });
+  if (!user.isAuthenticated && !user.pending) return <LoadingScreen />;
+  else return children;
 
-  return (
-    <Route
-      {...rest}
-      render={(props) => {
-        if (user.isAuthenticated && !user.pending) {
-          return <Component {...props} />;
-        } else return <LoadingScreen />;
-      }}
-    />
-  );
 };
 
 export default ProtectedRoute;

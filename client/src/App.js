@@ -3,7 +3,7 @@ import Index from "./Components/Pages/IndexPage/Index";
 import Login from "./Components/Pages/LoginPage/Login";
 import Register from "./Components/Pages/RegisterPage/Register";
 import Alert from "./Components/AlertSnackBar";
-import { BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Boards from "./Components/Pages/BoardsPage/Boards";
 import ProtectedRoute from "./Utils/ProtectedRoute";
 import { loadUser } from "./Services/userService";
@@ -17,13 +17,33 @@ const App = () => {
   return (
     <BrowserRouter>
       <Alert />
-      <Switch>
-        <ProtectedRoute exact path="/boards" component={Boards} />
-        <ProtectedRoute exact path="/board/:id" component={Board} />
-        <FreeRoute exact path="/login" component={Login} />
-        <FreeRoute exact path="/register" component={Register} />
-        <FreeRoute exact path="/" component={Index} />
-      </Switch>
+      <Routes>
+        <Route path='/boards' element={
+          <ProtectedRoute>
+            <Boards />
+          </ProtectedRoute>
+        } />
+        <Route path='/board/:id' element={
+          <ProtectedRoute>
+            <Board />
+          </ProtectedRoute>
+        } />
+        <Route path='/login' element={
+          <FreeRoute>
+            <Login />
+          </FreeRoute>
+        } />
+        <Route path='/register' element={
+          <FreeRoute>
+            <Register />
+          </FreeRoute>
+        } />
+        <Route path='/' element={
+          <FreeRoute>
+            <Index />
+          </FreeRoute>
+        } />
+      </Routes>
     </BrowserRouter>
   );
 };

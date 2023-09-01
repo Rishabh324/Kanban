@@ -10,18 +10,20 @@ import { getLists } from '../../../Services/boardService';
 import { updateCardOrder, updateListOrder } from '../../../Services/dragAndDropService';
 import LoadingScreen from '../../LoadingScreen';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { useParams } from 'react-router-dom';
 
-const Board = (props) => {
+const Board = () => {
 	/* props.match.params.id */
+	const { id } = useParams();
 	const dispatch = useDispatch();
 	const { backgroundImageLink, isImage, loading, title } = useSelector((state) => state.board);
 	const { allLists, loadingListService } = useSelector((state) => state.list);
 	const [searchString, setSearchString] = useState('');
-	const boardId = props.match.params.id;
+	const boardId = id;
 	useEffect(() => {
-		getBoard(props.match.params.id, dispatch);
+		getBoard(id, dispatch);
 		getLists(boardId, dispatch);
-	}, [props.match.params.id, dispatch, boardId]);
+	}, [id, dispatch, boardId]);
 
 	useEffect(() => {
 		document.title = title + ' | Trello Clone';

@@ -51,13 +51,13 @@ export const userSlice = createSlice({
       state.token = null;
       localStorage.removeItem("token");
     },
-    fetchingStart: (state)=>{
+    fetchingStart: (state) => {
       state.loading = true;
     },
     fetchingFinish: (state) => {
       state.loading = false;
     },
-    addNewBoard: (state,action) => {
+    addNewBoard: (state, action) => {
       state.userInfo.boards.unshift(action.payload);
     }
   },
