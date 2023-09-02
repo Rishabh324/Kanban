@@ -50,6 +50,7 @@ export const userSlice = createSlice({
       state.userInfo = null;
       state.token = null;
       localStorage.removeItem("token");
+      localStorage.removeItem("userInfo");
     },
     fetchingStart: (state) => {
       state.loading = true;

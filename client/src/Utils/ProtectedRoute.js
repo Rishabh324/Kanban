@@ -1,15 +1,16 @@
 import React, { useEffect } from "react";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import LoadingScreen from "../Components/LoadingScreen";
+import { useSelector } from "react-redux";
 
 const ProtectedRoute = ({ children }) => {
   const navigate = useNavigate();
-  const user = useSelector((state) => state.user);
+  const dum = useSelector((state) => state.user);
+  
   useEffect(() => {
-    if (!user.isAuthenticated && !user.pending) navigate("/");
+    if (!dum.isAuthenticated && !dum.pending) navigate("/");
   });
-  if (!user.isAuthenticated && !user.pending) return <LoadingScreen />;
+  if (!dum.isAuthenticated && !dum.pending) return <LoadingScreen />;
   else return children;
 
 };

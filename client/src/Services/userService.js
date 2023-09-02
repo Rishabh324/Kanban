@@ -61,9 +61,11 @@ export const login = async ({ email, password }, dispatch) => {
   dispatch(loginStart());
   try {
     const res = await axios.post(baseUrl + "login", { email, password });
+    console.log(res.data);
     const { user, message } = res.data;
+    console.log(user);
     localStorage.setItem("token", user.token);
-    console.log("hgdsjg");
+    localStorage.setItem("userInfo", JSON.stringify(user));
     setBearer(user.token);
     dispatch(loginSuccess({ user }));
     dispatch(

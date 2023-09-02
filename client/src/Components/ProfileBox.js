@@ -7,7 +7,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import Logout from '@mui/icons-material/Logout';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { logout } from '../Redux/Slices/userSlice';
 import { reset } from '../Redux/Slices/boardsSlice';
 
@@ -15,8 +15,9 @@ export default function ProfileBox() {
 	const [anchorEl, setAnchorEl] = React.useState(null);
 	const dispatch = useDispatch();
 	const open = Boolean(anchorEl);
-	const name = useSelector((state) => state.user.userInfo.name);
-	const color = useSelector((state) => state.user.userInfo.color);
+	const usr = JSON.parse(localStorage.getItem("userInfo"));
+	const name = usr.name[0];
+	const color = usr.color;
 	const handleClick = (event) => {
 		setAnchorEl(event.currentTarget);
 	};
@@ -29,7 +30,7 @@ export default function ProfileBox() {
 				<Tooltip title='Logout'>
 					<IconButton onClick={handleClick} size='small' sx={{ ml: 2 }}>
 						<Avatar sx={{ width: 32, height: 32, bgcolor: color, fontSize: '0.875rem', fontWeight: '800' }}>
-							{name[0]}
+							{name}
 						</Avatar>
 					</IconButton>
 				</Tooltip>
@@ -39,7 +40,7 @@ export default function ProfileBox() {
 				open={open}
 				onClose={handleClose}
 				onClick={handleClose}
-				PaperProps={{
+				slotProps={{
 					elevation: 0,
 					sx: {
 						overflow: 'visible',
